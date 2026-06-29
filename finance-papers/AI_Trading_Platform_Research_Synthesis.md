@@ -38,16 +38,18 @@ The state of the art in AI trading has evolved from static rule-based systems to
 The most effective modern system is **not a single model** but an **orchestration of specialized agents**, each handling a specific function, communicating through typed contracts, governed by safety layers.
 
 **Key result from literature:**
-- Hybrid AI trading systems achieved **135.49% return over 24 months** (vs. ~80% for S&P 500) using EMA+MACD+RSI+FinBERT+XGBoost with regime filtering (Pillai et al., 2026)
-- Multi-agent orchestration achieved **20.42% return with Sharpe ratio 2.63** on stock trading and **8.39% on BTC** with minimal drawdown (Li et al., Columbia)
-- LLM-driven sentiment trading (OPT model) achieved **Sharpe 3.05, 355% gain** over 2 years on US financial news (Kirtac & Germano, UCL/LSE)
-- DRL portfolio optimization (BAVAR-BLED/TD3) achieved **Sharpe 1.72, Sortino 2.70** on Dow Jones constituents (Mikriukov et al.)
+- Hybrid AI trading systems achieved **135.49% return over 24 months** (vs. ~80% for S&P 500) using EMA+MACD+RSI+FinBERT+XGBoost with regime filtering ([Pillai et al., 2026](https://arxiv.org/abs/2601.19504))
+- Multi-agent orchestration achieved **20.42% return with Sharpe ratio 2.63** on stock trading and **8.39% on BTC** with minimal drawdown ([Li et al., Columbia](https://arxiv.org/abs/2512.02227))
+- LLM-driven sentiment trading (OPT model) achieved **Sharpe 3.05, 355% gain** over 2 years on US financial news ([Kirtac & Germano, UCL/LSE](https://arxiv.org/abs/2412.19245))
+- DRL portfolio optimization (BAVAR-BLED/TD3) achieved **Sharpe 1.72, Sortino 2.70** on Dow Jones constituents ([Mikriukov et al.](https://arxiv.org/abs/2606.09104))
 
 ---
 
 ## 2. Platform Architecture Overview
 
 ### Recommended Architecture: `AgenticOrchestrator`
+
+> Based on the frameworks from [Aldridge et al. (Cornell, 2026)](https://arxiv.org/abs/2604.21672), [Li et al. (Columbia, 2025)](https://arxiv.org/abs/2512.02227), and [Letteri (2026)](https://arxiv.org/abs/2605.12532).
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -93,6 +95,8 @@ The most effective modern system is **not a single model** but an **orchestratio
 
 ### 3.1 ReAct (Reason + Act) Pattern
 
+> As catalogued in the Agent Design Pattern Catalogue ([Zhu et al., 2023](https://arxiv.org/abs/2303.07864)) and used throughout agentic finance systems ([Aldridge et al., 2026](https://arxiv.org/abs/2604.21672)).
+
 The most widely adopted pattern. The agent alternates between:
 - **Reasoning**: "Given what I know, what should I do next?"
 - **Action**: Execute the next step (API call, trade, analysis)
@@ -105,7 +109,7 @@ Thought → Action → Observation → Thought → Action → ...
 
 ### 3.2 Self-Reflection Pattern (SEP Framework)
 
-From Koa et al. (NUS, "Self-Reflective LLMs for Stock Prediction"):
+> From [Koa et al. (NUS, 2024)](https://arxiv.org/abs/2402.03659) — the Summarize-Explain-Predict framework.
 1. **Summarize**: Extract key information from input (news, social media)
 2. **Explain**: Generate reasoning for why a signal matters
 3. **Predict**: Output the prediction with the explanation as training signal
@@ -114,7 +118,7 @@ This creates a **self-improving loop** where the model trains on its own reflect
 
 ### 3.3 Z-Score Trigger Engine (AgenticAITA)
 
-From Letteri (University of L'Aquila):
+> From [Letteri (University of L'Aquila, 2026)](https://arxiv.org/abs/2605.12532) — the AgenticAITA framework.
 - Monitor market statistics continuously
 - Only activate LLM inference when |z-score| > threshold (e.g., 1.5σ or 2.0σ)
 - This creates **cognitive resource efficiency**: the LLM only "thinks" during anomalous conditions
@@ -142,7 +146,7 @@ All inter-agent communication uses structured JSON:
 
 ### 4.1 Sequential Deliberative Pipeline
 
-The core agentic loop (AgenticAITA framework):
+> Core contribution of [AgenticAITA (Letteri, 2026)](https://arxiv.org/abs/2605.12532) — validated over 5-day live dry-run with 157 zero-intervention decisions across 76 assets.
 
 ```
 Analyst Agent → Risk Manager → Executor Agent
@@ -183,7 +187,9 @@ Operationalizes portfolio-level thinking within individual agent reasoning:
 
 ## 5. LLM-Driven Signal Generation
 
-### 5.1 From Static Code Evolution (AlgoEvolve, Sharma & Shroff, IIIT Delhi)
+### 5.1 From Static Code Evolution (AlgoEvolve)
+
+> [Sharma & Shroff (IIIT Delhi, 2026)](https://arxiv.org/abs/2606.26173) — LLM-driven meta-evolution of trading programs.
 
 **Algorithm**: LLM-driven meta-evolution of trading programs
 - LLM generates Python trading strategy code
@@ -198,7 +204,9 @@ Operationalizes portfolio-level thinking within individual agent reasoning:
 - Consistently reduces zero-trade failures over generations
 - Best strategies employ **dynamic position sizing** based on recent volatility
 
-### 5.2 LLM Trading Agents (MadEvolve, Kvasiuk et al., UW-Madison)
+### 5.2 LLM Trading Agents (MadEvolve)
+
+> [Kvasiuk et al. (UW-Madison, 2026)](https://arxiv.org/abs/2605.23007) — adapted from DeepMind's AlphaEvolve.
 
 **Framework**: Adapted from DeepMind's AlphaEvolve (originally for cosmology)
 - LLM ensemble evaluates and mutates trading strategies
@@ -255,7 +263,7 @@ Reward: risk-adjusted return (Sharpe-like)
 
 ### 6.2 Deep RL Portfolio Optimization (BAVAR-BLED Framework)
 
-From Mikriukov et al. (U of Liverpool / Xi'an Jiaotong-Liverpool):
+> From [Mikriukov et al. (U of Liverpool / XJTLU, 2026)](https://arxiv.org/abs/2606.09104) — Sharpe 1.72, Sortino 2.70 on Dow Jones.
 
 **Architecture:**
 ```
@@ -277,7 +285,9 @@ CNNs → dynamic risk-aversion estimates
 
 **Results:** Sharpe 1.72, Sortino 2.70 (significantly outperforms equal-weight, HRP, NCO baselines)
 
-### 6.3 Multi-Agent RL for Market Making (Wang et al., King's College London)
+### 6.3 Multi-Agent RL for Market Making
+
+> [Wang et al. (King's College London, 2025)](https://arxiv.org/abs/2510.25929) — studying emergent collusion in hierarchical MARL.
 
 **Framework:** Hierarchical MARL with adversarial training
 - **Top-level**: Self-interested market maker (Agent A)
@@ -292,7 +302,9 @@ CNNs → dynamic risk-aversion estimates
 - **Interaction-level metrics** quantify behavioral asymmetry
 - Implication for platform design: monitor for emergent collusion patterns
 
-### 6.4 Financially Guided Deep Portfolio (Fernandes & Desell)
+### 6.4 Financially Guided Deep Portfolio
+
+> [Fernandes & Desell (2026)](https://arxiv.org/abs/2605.28853) — 270% relative improvement over S&P 500 on 50 stocks (2007-2023).
 
 **Framework:** Direct optimization of financial metrics as differentiable loss
 
@@ -319,7 +331,7 @@ loss = - Sharpe_ratio(portfolio_returns)
 
 ### 7.1 Regime-Switching Models
 
-From Pillai et al. (Amrita University) — the 135% return system:
+> The 135% return system from [Pillai et al. (Amrita University, 2026)](https://arxiv.org/abs/2601.19504) demonstrates the power of regime-aware multi-signal fusion.
 
 ```
 Regime Filter Logic:
@@ -340,7 +352,7 @@ Regime Filter Logic:
 
 ### 7.2 BAVAR Regime Detection
 
-From Mikriukov et al.:
+> From [Mikriukov et al. (2026)](https://arxiv.org/abs/2606.09104) — Bayesian multi-scale VAR for regime-aware allocation.
 - **Vector Autoregressive models** at multiple time scales
 - Each VAR represents a different market regime
 - **Bayesian averaging** weights regimes by posterior probability
@@ -348,6 +360,8 @@ From Mikriukov et al.:
 - Enables smooth transitions between regimes (no hard switching)
 
 ### 7.3 DeltaLag (HKUST): Dynamic Lead-Lag Detection
+
+> [Zhou, Wang et al. (HKUST / UCLA / Oxford, 2025)](https://arxiv.org/abs/2511.00390) — end-to-end deep learning for pair-specific lead-lag detection.
 
 **Key Innovation:** End-to-end deep learning for pair-specific lead-lag:
 - **Sparsified cross-attention** identifies which stocks lead others
@@ -407,7 +421,9 @@ Always include realistic costs:
 
 ## 9. Sentiment Analysis & NLP
 
-### 9.1 LLM Sentiment Trading (Kirtac & Germano, UCL/LSE)
+### 9.1 LLM Sentiment Trading
+
+> [Kirtac & Germano (UCL / LSE, 2024)](https://arxiv.org/abs/2412.19245) — OPT model achieved 74.4% accuracy and Sharpe 3.05 on 965K news articles.
 
 **Most impactful finding for platform design:**
 
@@ -428,7 +444,7 @@ Always include realistic costs:
 
 ### 9.2 Multimodal Stock Signal Architecture
 
-From Karadaş et al. (2025):
+> [Karadaş et al. (2025)](https://arxiv.org/abs/2502.05186) — combining price data, news, and social media via cross-modal attention.
 - Combine: **price data** + **text data** (news) + **social media signals**
 - Each modality processed by specialized encoder
 - **Cross-modal attention** fuses information
@@ -507,7 +523,7 @@ When agents disagree:
 
 ### 11.1 Lead-Lag Effect in Practice
 
-From DeltaLag (HKUST):
+> Based on [Zhou, Wang et al. (HKUST / UCLA / Oxford, 2025)](https://arxiv.org/abs/2511.00390) — the DeltaLag framework.
 - Large-cap stocks lead small-cap stocks within same sector
 - Futures lead spot markets (by minutes)
 - Options implied volatility leads realized volatility
@@ -659,20 +675,20 @@ Decision Log:
 
 ## 15. Paper References
 
-1. **Aldridge, I., An, J., Burke, R., et al.** (2026). "Agentic Artificial Intelligence in Finance: A Comprehensive Survey." arXiv:2604.21672.
-2. **Letteri, I.** (2026). "AgenticAITA: A Proof-of-Concept about Deliberative Multi-Agent Reasoning for Autonomous Trading Systems." arXiv:2605.12532.
-3. **Sharma, D. & Shroff, G.** (2026). "AlgoEvolve: LLM-driven Meta-evolution of Algorithmic Trading Programs." arXiv:2606.26173.
-4. **Kvasiuk, Y., Li, T., et al.** (2026). "MadEvolve: Evolutionary Optimization of Trading Systems with Large Language Models." arXiv:2605.23007.
-5. **Zhou, W., Wang, S., et al.** (2025). "DeltaLag: Learning Dynamic Lead-Lag Patterns in Financial Markets." arXiv:2511.00390.
-6. **Li, J., Grover, A., et al.** (2025). "Orchestration Framework for Financial Agents: From Algorithmic Trading to Agentic Trading." arXiv:2512.02227.
-7. **Pillai, V.N.K., Ajith, A., et al.** (2026). "Generating Alpha: A Hybrid AI-Driven Trading System." arXiv:2601.19504.
-8. **Kirtac, K. & Germano, G.** (2024). "Sentiment trading with large language models." arXiv:2412.19245.
-9. **Koa, K.J.L., Ma, Y., et al.** (2024). "Learning to Generate Explainable Stock Predictions using Self-Reflective Large Language Models." arXiv:2402.03659.
-10. **Wang, Z., Ventre, C., & Polukarov, M.** (2025). "Multi-Agent Reinforcement Learning for Market Making: Competition without Collusion." arXiv:2510.25929.
-11. **Mikriukov, D., Sun, R., et al.** (2026). "Addressing Market Regime Changes and Heavy-Tailed Returns in Portfolio Optimization via Bayesian VAR and Elliptical Black-Litterman." arXiv:2606.09104.
-12. **Fernandes, R. & Desell, T.** (2026). "Financially Guided Deep Portfolio Optimization." arXiv:2605.28853.
-13. **Weinberg, A.I.** (2026). "Quantum-Assisted Optimal Rebalancing with Uncorrelated Asset Selection for Algorithmic Trading." arXiv:2603.16904.
-14. **Karadaş, F., Eravcı, B., et al.** (2025). "Multimodal Stock Price Prediction." arXiv:2502.05186.
+1. **Aldridge, I., An, J., Burke, R., et al.** (2026). "Agentic Artificial Intelligence in Finance: A Comprehensive Survey." arXiv:2604.21672. [https://arxiv.org/abs/2604.21672](https://arxiv.org/abs/2604.21672)
+2. **Letteri, I.** (2026). "AgenticAITA: A Proof-of-Concept about Deliberative Multi-Agent Reasoning for Autonomous Trading Systems." arXiv:2605.12532. [https://arxiv.org/abs/2605.12532](https://arxiv.org/abs/2605.12532)
+3. **Sharma, D. & Shroff, G.** (2026). "AlgoEvolve: LLM-driven Meta-evolution of Algorithmic Trading Programs." arXiv:2606.26173. [https://arxiv.org/abs/2606.26173](https://arxiv.org/abs/2606.26173)
+4. **Kvasiuk, Y., Li, T., et al.** (2026). "MadEvolve: Evolutionary Optimization of Trading Systems with Large Language Models." arXiv:2605.23007. [https://arxiv.org/abs/2605.23007](https://arxiv.org/abs/2605.23007)
+5. **Zhou, W., Wang, S., et al.** (2025). "DeltaLag: Learning Dynamic Lead-Lag Patterns in Financial Markets." arXiv:2511.00390. [https://arxiv.org/abs/2511.00390](https://arxiv.org/abs/2511.00390)
+6. **Li, J., Grover, A., et al.** (2025). "Orchestration Framework for Financial Agents: From Algorithmic Trading to Agentic Trading." arXiv:2512.02227. [https://arxiv.org/abs/2512.02227](https://arxiv.org/abs/2512.02227)
+7. **Pillai, V.N.K., Ajith, A., et al.** (2026). "Generating Alpha: A Hybrid AI-Driven Trading System." arXiv:2601.19504. [https://arxiv.org/abs/2601.19504](https://arxiv.org/abs/2601.19504)
+8. **Kirtac, K. & Germano, G.** (2024). "Sentiment trading with large language models." arXiv:2412.19245. [https://arxiv.org/abs/2412.19245](https://arxiv.org/abs/2412.19245)
+9. **Koa, K.J.L., Ma, Y., et al.** (2024). "Learning to Generate Explainable Stock Predictions using Self-Reflective Large Language Models." arXiv:2402.03659. [https://arxiv.org/abs/2402.03659](https://arxiv.org/abs/2402.03659)
+10. **Wang, Z., Ventre, C., & Polukarov, M.** (2025). "Multi-Agent Reinforcement Learning for Market Making: Competition without Collusion." arXiv:2510.25929. [https://arxiv.org/abs/2510.25929](https://arxiv.org/abs/2510.25929)
+11. **Mikriukov, D., Sun, R., et al.** (2026). "Addressing Market Regime Changes and Heavy-Tailed Returns in Portfolio Optimization via Bayesian VAR and Elliptical Black-Litterman." arXiv:2606.09104. [https://arxiv.org/abs/2606.09104](https://arxiv.org/abs/2606.09104)
+12. **Fernandes, R. & Desell, T.** (2026). "Financially Guided Deep Portfolio Optimization." arXiv:2605.28853. [https://arxiv.org/abs/2605.28853](https://arxiv.org/abs/2605.28853)
+13. **Weinberg, A.I.** (2026). "Quantum-Assisted Optimal Rebalancing with Uncorrelated Asset Selection for Algorithmic Trading." arXiv:2603.16904. [https://arxiv.org/abs/2603.16904](https://arxiv.org/abs/2603.16904)
+14. **Karadaş, F., Eravcı, B., et al.** (2025). "Multimodal Stock Price Prediction." arXiv:2502.05186. [https://arxiv.org/abs/2502.05186](https://arxiv.org/abs/2502.05186)
 
 ---
 
