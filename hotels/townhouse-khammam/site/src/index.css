@@ -1,0 +1,620 @@
+/* Townhouse Khammam — Industrial/Urban Loft Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #1a1a1a;
+  color: #e0e0e0;
+  line-height: 1.6;
+}
+
+.th-site {
+  min-height: 100vh;
+}
+
+/* Navigation */
+.th-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 16px 40px;
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #D4AF37;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-icon {
+  color: #D4AF37;
+  font-size: 1.5rem;
+}
+
+.logo-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: #D4AF37;
+  letter-spacing: 3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 4px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #BDC3C7;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  letter-spacing: 1px;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #D4AF37;
+}
+
+/* Hero */
+.th-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2C3E50 100%);
+  overflow: hidden;
+}
+
+.th-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 50px,
+    rgba(189, 195, 199, 0.03) 50px,
+    rgba(189, 195, 199, 0.03) 51px
+  ),
+  repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 50px,
+    rgba(189, 195, 199, 0.03) 50px,
+    rgba(189, 195, 199, 0.03) 51px
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.hero-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.scroll-line {
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #D4AF37;
+}
+
+.section-tag {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  color: #D4AF37;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.th-hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  line-height: 0.95;
+  margin-bottom: 20px;
+}
+
+.title-line1 {
+  font-size: 5rem;
+  color: #fff;
+  letter-spacing: 8px;
+  display: block;
+}
+
+.title-line2 {
+  font-size: 5rem;
+  color: #fff;
+  letter-spacing: 8px;
+  display: block;
+}
+
+.title-line2 .gold {
+  color: #D4AF37;
+}
+
+.th-hero-sub {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.95rem;
+  color: #BDC3C7;
+  margin-bottom: 36px;
+  letter-spacing: 1px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #D4AF37;
+  color: #1a1a1a;
+}
+
+.btn-primary:hover {
+  background: #C9A96E;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #BDC3C7;
+  border: 1px solid #7F8C8D;
+}
+
+.btn-outline:hover {
+  border-color: #D4AF37;
+  color: #D4AF37;
+}
+
+.btn-small {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Sections */
+.section {
+  padding: 100px 0;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: #D4AF37;
+  letter-spacing: 3px;
+  margin-top: 8px;
+}
+
+.divider-line {
+  width: 60px;
+  height: 2px;
+  background: #D4AF37;
+  margin: 16px auto 0;
+}
+
+.divider-diamond {
+  color: #D4AF37;
+  font-size: 0.8rem;
+  margin-top: 12px;
+}
+
+/* Rooms */
+.th-rooms {
+  background: #222;
+}
+
+.rooms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.room-card {
+  background: #2a2a2a;
+  border: 1px solid rgba(189, 195, 199, 0.1);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.room-card:hover {
+  transform: translateY(-6px);
+  border-color: #D4AF37;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.room-image {
+  height: 220px;
+  background: linear-gradient(135deg, #2C3E50, #1a1a1a);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.room-image.loft-suite {
+  background: linear-gradient(135deg, #34495E, #2C3E50);
+}
+
+.room-image.pod-room {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+}
+
+.room-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.5) 100%);
+}
+
+.room-size-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(0,0,0,0.7);
+  color: #BDC3C7;
+  padding: 4px 10px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+}
+
+.room-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #D4AF37;
+  color: #1a1a1a;
+  padding: 4px 12px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.room-info {
+  padding: 24px;
+}
+
+.room-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #D4AF37;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.room-features {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.room-features li {
+  padding: 4px 0;
+  color: #BDC3C7;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+}
+
+.room-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-price {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #D4AF37;
+}
+
+.price-currency {
+  font-size: 1.2rem;
+  vertical-align: top;
+}
+
+.price-amount {
+  font-size: 1.8rem;
+}
+
+.price-night {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  color: #7F8C8D;
+  margin-left: 4px;
+}
+
+/* Amenities */
+.th-amenities {
+  background: #1a1a1a;
+}
+
+.amenities-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.amenity-card {
+  background: #222;
+  padding: 36px;
+  border: 1px solid rgba(189, 195, 199, 0.1);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.amenity-card:hover {
+  transform: translateY(-4px);
+  border-color: #D4AF37;
+}
+
+.amenity-icon-wrap {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  border: 1px solid #D4AF37;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+}
+
+.amenity-icon {
+  font-size: 1.8rem;
+  transform: rotate(-45deg);
+}
+
+.amenity-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  color: #D4AF37;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.amenity-desc {
+  color: #BDC3C7;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.amenity-hours {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  color: #7F8C8D;
+}
+
+/* Contact */
+.th-contact {
+  background: #222;
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-item h4 {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #D4AF37;
+  margin-bottom: 4px;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.contact-item p {
+  color: #BDC3C7;
+}
+
+.contact-form-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.contact-form {
+  background: #2a2a2a;
+  padding: 40px;
+  border: 1px solid rgba(189, 195, 199, 0.1);
+  width: 100%;
+}
+
+.contact-form h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #D4AF37;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(189, 195, 199, 0.2);
+  background: #1a1a1a;
+  color: #e0e0e0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #D4AF37;
+}
+
+/* Footer */
+.th-footer {
+  background: #111;
+  color: #7F8C8D;
+  padding: 60px 0 24px;
+  border-top: 2px solid #D4AF37;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand .logo-text {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+}
+
+.footer-tagline {
+  opacity: 0.8;
+  margin-bottom: 16px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  color: #D4AF37;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+.footer-links a {
+  display: block;
+  color: #7F8C8D;
+  text-decoration: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.footer-links a:hover {
+  color: #D4AF37;
+}
+
+.footer-contact p {
+  padding: 4px 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 24px;
+  text-align: center;
+  opacity: 0.7;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title-line1, .title-line2 {
+    font-size: 3rem;
+    letter-spacing: 4px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    display: none;
+  }
+}

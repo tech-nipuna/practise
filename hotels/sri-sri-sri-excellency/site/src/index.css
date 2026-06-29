@@ -1,0 +1,478 @@
+/* Sri Sri Sri Excellency — Spiritual/Zen Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Mukta', sans-serif;
+  background: #fefcf5;
+  color: #3d3a35;
+  line-height: 1.7;
+}
+
+.zen-site {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navigation */
+.zen-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: rgba(254, 252, 245, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 153, 51, 0.1);
+}
+
+.nav-logo {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #E67E22;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-logo .om {
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: 'Mukta', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #3d3a35;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #FF9933;
+  color: #fff;
+}
+
+/* Hero */
+.zen-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(180deg, #FF9933 0%, #E67E22 50%, #D35400 100%);
+  overflow: hidden;
+}
+
+.zen-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 60%);
+}
+
+.zen-hero::after {
+  content: 'ॐ';
+  position: absolute;
+  font-size: 20rem;
+  opacity: 0.06;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.zen-hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+
+.zen-hero-sub {
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #E67E22;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
+
+/* Sections */
+.section {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: #E67E22;
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 60px;
+}
+
+/* Rooms */
+.zen-rooms {
+  background: #fff;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.zen-card {
+  background: #fefcf5;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: 1px solid rgba(230, 126, 34, 0.1);
+}
+
+.zen-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(230, 126, 34, 0.1);
+}
+
+.zen-room-image {
+  height: 200px;
+  background: linear-gradient(135deg, #FF9933, #E67E22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.room-icon {
+  font-size: 4rem;
+}
+
+.room-size {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.9);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #E67E22;
+}
+
+.room-info {
+  padding: 24px;
+}
+
+.room-info h3 {
+  font-size: 1.5rem;
+  color: #E67E22;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.room-features {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.room-features li {
+  padding: 4px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.room-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #E67E22;
+}
+
+.room-price small {
+  font-size: 0.8rem;
+  color: #888;
+  font-weight: 400;
+}
+
+.btn-book {
+  background: #FF9933;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-family: 'Mukta', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-book:hover {
+  background: #E67E22;
+}
+
+/* Amenities */
+.zen-amenities {
+  background: linear-gradient(180deg, #fef7ee 0%, #fefcf5 100%);
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.zen-amenity {
+  background: #fff;
+  padding: 36px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid rgba(230, 126, 34, 0.06);
+}
+
+.zen-amenity:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(230, 126, 34, 0.08);
+}
+
+.amenity-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.zen-amenity h3 {
+  font-size: 1.2rem;
+  color: #E67E22;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.zen-amenity p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Contact */
+.zen-contact {
+  background: #fff;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-item h4 {
+  color: #E67E22;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.contact-item p {
+  color: #666;
+}
+
+.contact-form {
+  background: #fefcf5;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.contact-form h3 {
+  font-size: 1.5rem;
+  color: #E67E22;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(230, 126, 34, 0.15);
+  border-radius: 10px;
+  font-family: 'Mukta', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #FF9933;
+}
+
+.contact-form button {
+  width: 100%;
+}
+
+/* Footer */
+.zen-footer {
+  background: #2c1810;
+  color: #d4a574;
+  padding: 60px 0 24px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand p {
+  margin-top: 12px;
+  opacity: 0.8;
+}
+
+.footer-logo-text {
+  font-size: 1.4rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.footer-links a {
+  display: block;
+  color: #d4a574;
+  text-decoration: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-contact p {
+  padding: 4px 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .zen-hero-title {
+    font-size: 2.2rem;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    display: none;
+  }
+}

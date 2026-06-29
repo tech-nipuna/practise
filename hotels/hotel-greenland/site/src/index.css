@@ -1,0 +1,496 @@
+/* Hotel Greenland — Eco/Nature Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background: #f8f6f0;
+  color: #2d3a2a;
+  line-height: 1.6;
+}
+
+.eco-site {
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Navigation */
+.eco-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  background: rgba(248, 246, 240, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(45, 90, 39, 0.1);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: #2D5A27;
+}
+
+.leaf-icon {
+  font-size: 1.6rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2d3a2a;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+  background: #2D5A27;
+  color: #fff;
+}
+
+/* Hero */
+.eco-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: linear-gradient(135deg, #2D5A27 0%, #4A7C59 40%, #6B8F3C 100%);
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.1) 0%, transparent 60%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 800px;
+  padding: 0 24px;
+}
+
+.eco-hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 4rem;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.eco-hero-sub {
+  font-size: 1.25rem;
+  font-weight: 300;
+  opacity: 0.9;
+  margin-bottom: 36px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #2D5A27;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.6);
+  padding: 14px 32px;
+  border-radius: 30px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  border-color: #fff;
+}
+
+.eco-stats {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Sections */
+.section {
+  padding: 100px 0;
+}
+
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.8rem;
+  color: #2D5A27;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 60px;
+}
+
+/* Rooms */
+.eco-rooms {
+  background: #fff;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}
+
+.eco-card {
+  background: #f8f6f0;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.3s;
+  border: 1px solid rgba(45, 90, 39, 0.08);
+}
+
+.eco-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(45, 90, 39, 0.12);
+}
+
+.eco-room-image {
+  height: 200px;
+  background: linear-gradient(135deg, #4A7C59, #2D5A27);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.room-icon {
+  font-size: 4rem;
+}
+
+.room-size {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.9);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2D5A27;
+}
+
+.room-info {
+  padding: 24px;
+}
+
+.room-info h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: #2D5A27;
+  margin-bottom: 12px;
+}
+
+.room-features {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.room-features li {
+  padding: 4px 0;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.room-book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.room-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: #2D5A27;
+}
+
+.room-price small {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.btn-book {
+  background: #2D5A27;
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-book:hover {
+  background: #1a3d17;
+}
+
+/* Amenities */
+.eco-amenities {
+  background: linear-gradient(180deg, #f0ede4 0%, #f8f6f0 100%);
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.eco-amenity {
+  background: #fff;
+  padding: 36px;
+  border-radius: 16px;
+  text-align: center;
+  transition: all 0.3s;
+  border: 1px solid rgba(45, 90, 39, 0.06);
+}
+
+.eco-amenity:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(45, 90, 39, 0.08);
+}
+
+.amenity-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.eco-amenity h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: #2D5A27;
+  margin-bottom: 8px;
+}
+
+.eco-amenity p {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+/* Contact */
+.eco-contact {
+  background: #fff;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.contact-item h4 {
+  font-family: 'DM Serif Display', serif;
+  color: #2D5A27;
+  margin-bottom: 4px;
+}
+
+.contact-item p {
+  color: #666;
+}
+
+.contact-form {
+  background: #f8f6f0;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.contact-form h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: #2D5A27;
+  margin-bottom: 24px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid rgba(45, 90, 39, 0.15);
+  border-radius: 10px;
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #4A7C59;
+}
+
+.contact-form button {
+  width: 100%;
+}
+
+/* Footer */
+.eco-footer {
+  background: #1a3d17;
+  color: #d4d4aa;
+  padding: 60px 0 24px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-brand p {
+  margin-top: 12px;
+  opacity: 0.8;
+}
+
+.footer-logo-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.footer-links h4,
+.footer-eco h4 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-family: 'DM Serif Display', serif;
+}
+
+.footer-links a {
+  display: block;
+  color: #d4d4aa;
+  text-decoration: none;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-eco span {
+  display: block;
+  padding: 4px 0;
+  opacity: 0.9;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .eco-hero-title {
+    font-size: 2.5rem;
+  }
+  .eco-stats {
+    gap: 24px;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+  .nav-links {
+    display: none;
+  }
+}
